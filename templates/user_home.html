@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>User Home</title>
+</head>
+<body>
+    <h1>Welcome User</h1>
+      <form method="post" enctype="multipart/form-data">
+        <input type="file" name="image">
+        <button type="submit">Upload Image</button>
+    </form>
+
+    <h2>Your Images</h2>
+        {% if images %}
+                {% for image in images %}
+                    <img src="{{image.image_path}}" alt="User Image" width="200" height="200"><br>
+                {% endfor %}
+        {% else %}
+               <p>No Image Uploaded yet</p>
+        {% endif %}
+    <br><br>
+    <a href="{{ url_for('profile') }}">Profile</a> |
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>
